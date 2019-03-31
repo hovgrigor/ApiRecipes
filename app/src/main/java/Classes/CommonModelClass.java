@@ -4,15 +4,15 @@ import Activities.Favourites;
 
 public class CommonModelClass
 {
-    public static CommonModelClass singletonObject;
-    /** A private Constructor prevents any other class from instantiating. */
+    private static CommonModelClass singletonObject;
 
     private Favourites baseActivity;
 
-    public CommonModelClass()
+    private CommonModelClass()
     {
         //   Optional Code
     }
+
     public static synchronized CommonModelClass getSingletonObject()
     {
         if (singletonObject == null)
@@ -22,22 +22,15 @@ public class CommonModelClass
         return singletonObject;
     }
 
-
-    /**
-     * used to clear CommonModelClass(SingletonClass) Memory
-     */
     public void clear()
     {
         singletonObject = null;
     }
 
-
     public Object clone() throws CloneNotSupportedException
     {
         throw new CloneNotSupportedException();
     }
-
-    //getters and setters starts from here.it is used to set and get a value
 
     public Favourites getbaseActivity()
     {
@@ -48,5 +41,4 @@ public class CommonModelClass
     {
         this.baseActivity = baseActivity;
     }
-
 }

@@ -50,7 +50,7 @@ public class SearchArea extends Fragment {
     private FoodAdapter f_adapter;
     private ArrayList<Food> l_FoodList = new ArrayList<>();
     private boolean lock;
-    private int Finish = 50;
+    private int Finish = 20;
     private int Start = 0;
     private String ingridient;
     private int number_per_time = Finish;
@@ -121,9 +121,11 @@ public class SearchArea extends Fragment {
                 if (visible == length - 1)
                 {
                     if(length != 0) {
-                        Start += number_per_time;
-                        Finish += number_per_time;
-                        getJson(ingridient);
+                        if(!lock){
+                            Start += number_per_time;
+                            Finish += number_per_time;
+                            getJson(ingridient);
+                        }
                     }
                 }
             }
@@ -147,7 +149,7 @@ public class SearchArea extends Fragment {
         //Refreshing everything
         Start = 0;
         this.ingridient = ingridient;
-        Finish = 50;
+        Finish = number_per_time;
         l_FoodList.clear();
         f_adapter.notifyDataSetChanged();
         getJson(ingridient);
@@ -217,7 +219,7 @@ public class SearchArea extends Fragment {
                             l_FoodList.get(i + (Finish - number_per_time)).setIm_food(bm);
                             psgbar.setVisibility(View.GONE);
                             f_adapter.notifyDataSetChanged();
-                            if(i == Finish - 1){
+                            if(i == number_per_time - 1){
                                 lock = false;
                             }
                         }catch(java.lang.IndexOutOfBoundsException e){
