@@ -178,7 +178,7 @@ public class SearchArea extends Fragment {
             //If no hits are present
             if(hits.toString().equals("[]"))
             {
-                Snackbar.make(parentLayout, "No results were found", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(Objects.requireNonNull(getView()), "No results were found", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 psgbar.setVisibility(View.GONE);
                 lock = false;
             }else
