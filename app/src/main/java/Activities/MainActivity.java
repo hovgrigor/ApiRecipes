@@ -22,9 +22,9 @@ import Ingridientslist.Ingridients;
 
 public class MainActivity extends AppCompatActivity implements SearchArea.OnFragmentInteractionListener,Favourites.OnFragmentInteractionListener  {
 
-    ViewPager viewPager;
-    PagerAdapter pagerAdapter;
-    int position;
+    ViewPager m_viewPager;
+    PagerAdapter m_pagerAdapter;
+    int m_position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,17 @@ public class MainActivity extends AppCompatActivity implements SearchArea.OnFrag
         tabLayout.addTab(tabLayout.newTab().setText("Search"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        viewPager = findViewById(R.id.pager);
+        m_viewPager = findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+        m_viewPager.setAdapter(adapter);
+        m_viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(m_viewPager));
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                position = tab.getPosition();
+                m_position = tab.getPosition();
                 //viewPager.setCurrentItem(tab.getPosition());
                 //pagerAdapter = (PagerAdapter)viewPager.getAdapter();
                 //Favourites favourites = Objects.requireNonNull(pagerAdapter).m_favourite;
@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements SearchArea.OnFrag
             //Triggered when text is submitted in search bar
             public boolean onQueryTextSubmit(String s)
             {
-                if(position == 1) {
+                if(m_position == 1) {
                     //Clearing focus so it wont call twice
                     searchView.clearFocus();
-                    pagerAdapter = (PagerAdapter) viewPager.getAdapter();
-                    SearchArea searchArea = Objects.requireNonNull(pagerAdapter).m_searchArea;
+                    m_pagerAdapter = (PagerAdapter) m_viewPager.getAdapter();
+                    SearchArea searchArea = Objects.requireNonNull(m_pagerAdapter).m_searchArea;
                     searchArea.firstSearch(s);
                 }
                 return true;

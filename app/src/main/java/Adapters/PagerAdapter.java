@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import Activities.Favourites;
+import Activities.MainActivity;
 import Activities.SearchArea;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
@@ -13,9 +14,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
 
     public SearchArea m_searchArea;
-    public static Favourites m_favourite;
-
-
+    public Favourites m_favourite;
 
     public PagerAdapter(FragmentManager fm, int NumberOfTabs)
     {

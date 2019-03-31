@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 import Adapters.FoodAdapter;
+import Classes.CommonModelClass;
 import Classes.FavouriteListener;
 import Classes.Food;
 import Saving.SaveImage;
@@ -85,13 +87,16 @@ public class Favourites extends Fragment implements FavouriteListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favourites, container, false);
     }
 
-    public void onViewCreated(View v, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View v, Bundle savedInstanceState) {
+        CommonModelClass commonModelClass = CommonModelClass.getSingletonObject();
+        commonModelClass.setbaseActivity(this);
+
         super.onViewCreated(v, savedInstanceState);
         RecyclerView recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.r_foodListFavourite);
         //Configuring RecyclerView

@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import Adapters.PagerAdapter;
+import Classes.CommonModelClass;
 import Classes.FavouriteListener;
 import Saving.SaveImage;
 import Saving.SaveObject;
@@ -41,7 +42,11 @@ public class Details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListener(PagerAdapter.m_favourite);
+
+        CommonModelClass commonModelClass = CommonModelClass.getSingletonObject();
+        Favourites m_favourites = commonModelClass.getbaseActivity();
+
+        setListener(m_favourites);
         setContentView(R.layout.activity_details);
 
         ListView list_items = findViewById(R.id.l_foodDetails);
