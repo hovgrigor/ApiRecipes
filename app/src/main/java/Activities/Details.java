@@ -19,8 +19,7 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import java.io.File;
 import java.util.ArrayList;
 
-import Adapters.PagerAdapter;
-import Classes.CommonModelClass;
+import Classes.SingletonClass;
 import Classes.FavouriteListener;
 import Saving.SaveImage;
 import Saving.SaveObject;
@@ -43,8 +42,8 @@ public class Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CommonModelClass commonModelClass = CommonModelClass.getSingletonObject();
-        Favourites m_favourites = commonModelClass.getbaseActivity();
+        SingletonClass singletonClass = SingletonClass.getSingletonObject();
+        Favourites m_favourites = singletonClass.getFavourite();
 
         setListener(m_favourites);
         setContentView(R.layout.activity_details);

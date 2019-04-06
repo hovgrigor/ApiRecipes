@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -20,7 +19,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 import Adapters.FoodAdapter;
-import Classes.CommonModelClass;
+import Classes.SingletonClass;
 import Classes.FavouriteListener;
 import Classes.Food;
 import Saving.SaveImage;
@@ -94,8 +93,8 @@ public class Favourites extends Fragment implements FavouriteListener {
     }
 
     public void onViewCreated(@NonNull View v, Bundle savedInstanceState) {
-        CommonModelClass commonModelClass = CommonModelClass.getSingletonObject();
-        commonModelClass.setbaseActivity(this);
+        SingletonClass singletonClass = SingletonClass.getSingletonObject();
+        singletonClass.setFavourite(this);
 
         super.onViewCreated(v, savedInstanceState);
         RecyclerView recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.r_foodListFavourite);
